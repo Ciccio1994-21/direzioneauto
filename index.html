@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direzione Auto</title>
+    <title>Direzione Auto | Showroom</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -43,7 +43,7 @@
 <body>
     <div id="loader">
         <div class="flex flex-col items-center gap-4">
-            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-600"></div>
+            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#D4AF37]"></div>
             <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Caricamento...</p>
         </div>
     </div>
@@ -54,36 +54,29 @@
 
         // ==========================================
         // CONFIGURAZIONE DEL TEMPLATE
-        // Modifica questi valori per adattare il sito 
-        // a una nuova concessionaria
         // ==========================================
         const CONFIG = {
-            // Dati Generali
             nomeConcessionaria: "Direzione Auto",
             citta: "Barrafranca",
             provinciaBreve: "EN",
             provinciaEstesa: "Provincia di Enna",
             cap: "94012",
             
-            // Testi Homepage
             sottotitoloHero: "Esperienza, import/export e passione per le auto al tuo servizio.",
             descrizioneFooter: "Vendita auto con passione da oltre 20 anni. Esperienza nel settore import ed export a tua disposizione.",
             
-            // Immagini Hero Slider (3 immagini che si alternano)
             heroImages: [
                 "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1600",
                 "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=1600",
                 "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=1600"
             ],
 
-            // Contatti
             indirizzo: "Corso Vittorio Emanuele 465",
-            telefonoMostrato: "+39 392 136 1838",
-            telefonoLink: "+393921361838",
-            whatsappNumber: "393921361838",
+            telefonoMostrato: "+39 352 097 9989",
+            telefonoLink: "+393520979989",
+            whatsappNumber: "393520979989",
             email: "info@direzioneauto.it",
             
-            // Social e Link Esterni
             social: {
                 instagram: "",
                 facebook: "https://www.facebook.com/people/Direzione-Auto/61589701618386/?rdid=GoruiGBQuOVDDg7E&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Cka6NKLYh%2F%3Fref%3D1",
@@ -91,18 +84,16 @@
             },
             linkGoogleFormValutazione: "https://docs.google.com/forms/d/e/1FAIpQLSeYtcqgrOejvWqClIlEUneC2LPtTNzf67413H_mxFtcnGdnbw/viewform?embedded=true",
             
-            // Sezione "Chi Siamo"
             chiSiamo: {
-                titoloOrigini: "Dall'hôtellerie alla passione per i motori",
-                paragrafo1: "La storia di Rosario Gagliano nasce come imprenditore nel mondo alberghiero, ma con una profonda e radicata passione per le automobili. Circa 20 anni fa, Rosario ha avuto il suo primo approccio nel settore automotive iniziando con la formula del conto vendita, trasformando una passione in una vera e propria esperienza formativa ed imprenditoriale.",
-                paragrafo2: "Forte di queste basi, negli anni ha sviluppato e affinato competenze solide, specializzandosi anche nelle dinamiche complesse del mercato import ed export di veicoli. Oggi, Direzione Auto rappresenta il frutto di questo lungo percorso, offrendo ai clienti un servizio affidabile, trasparente e veicoli selezionati con estrema cura.",
-                citazione: "Ho iniziato vent'anni fa vendendo auto in conto vendita per pura passione. Oggi, grazie all'esperienza maturata anche nell'import/export, continuo a selezionare ogni veicolo con la stessa attenzione e dedizione di un tempo.",
+                titoloOrigini: "La passione per i motori del nostro Gruppo",
+                paragrafo1: "La storia del nostro Gruppo e dell'Amministratore Unico Rosario Gagliano nasce da una profonda e radicata passione per le automobili. Circa 20 anni fa, Rosario ha avuto il suo primo approccio nel settore automotive iniziando con la formula del conto vendita, trasformando una passione in una vera e propria esperienza formativa ed imprenditoriale.",
+                paragrafo2: "Forte di queste basi, negli anni il Gruppo ha sviluppato e affinato competenze solide, specializzandosi anche nelle dinamiche complesse del mercato import ed export di veicoli. Oggi, Direzione Auto rappresenta il frutto di questo lungo percorso, offrendo ai clienti un servizio affidabile, trasparente e veicoli selezionati con estrema cura.",
+                citazione: "Ho iniziato vent'anni fa vendendo auto in conto vendita per pura passione. Oggi, guidando questo Gruppo e grazie all'esperienza maturata anche nell'import/export, continuo a selezionare ogni veicolo con la stessa attenzione e dedizione di un tempo.",
                 nomeFondatore: "Rosario Gagliano",
-                ruoloFondatore: "Titolare e Fondatore",
+                ruoloFondatore: "Amministratore Unico",
                 inizialeFondatore: "R"
             },
 
-            // Database Firebase (Nuova configurazione)
             firebase: {
                 apiKey: "AIzaSyCB5yV6u4DtzUFb0jADUJobh8In52JNzp4",
                 authDomain: "maxcar-7416d.firebaseapp.com",
@@ -112,10 +103,8 @@
                 appId: "1:279232212865:web:4f83efdeff7306e0bb4280",
                 measurementId: "G-ZYR2X61ZNE"
             },
-            // L'ID del database per scaricare le auto di questa specifica concessionaria
             dbAppId: "direzione-auto" 
         };
-        // ==========================================
 
         if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebase);
         const db = firebase.firestore();
@@ -124,27 +113,19 @@
 
         const IG_ICON = "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg";
         const FB_ICON = "https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg";
-        const LOGO_PRINCIPALE = "Progetto senza titolo-4.png";
+        const LOGO_PRINCIPALE = "Logo2.png";
         const LOGO_AUTOSUPERMARKET = "unnamed.png";
-        const LOGO_AMWAY = "amway.png";
-        const LOGO_MAGAZZINI = "magazzini-branducci.png";
 
         const App = () => {
             const [currentPage, setCurrentPage] = useState('home');
             const [selectedCar, setSelectedCar] = useState(null);
             const [autoList, setAutoList] = useState([]);
-            const [filter, setFilter] = useState('Auto Usate');
             const [loading, setLoading] = useState(true);
             const [activeImage, setActiveImage] = useState(null);
             const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
             
-            // Stato per il carosello della Hero
             const [currentHeroImage, setCurrentHeroImage] = useState(0);
-            
-            // Stato per l'utente Firebase
             const [user, setUser] = useState(null);
-            
-            // Nuovi stati per i filtri avanzati del Piazzale
             const [showMobileFilters, setShowMobileFilters] = useState(false);
             const [filters, setFilters] = useState({
                 searchQuery: '',
@@ -157,7 +138,6 @@
                 cambio: ''
             });
 
-            // Gestione dei filtri
             const handleFilterChange = (e) => {
                 const { name, value } = e.target;
                 setFilters(prev => ({ ...prev, [name]: value }));
@@ -167,7 +147,6 @@
                 setFilters({ searchQuery: '', marca: '', categoria: 'Tutte', prezzoMax: '', annoMin: '', kmMax: '', alimentazione: '', cambio: '' });
             };
 
-            // Funzione per nascondere la schermata di caricamento
             const nascondiLoader = () => {
                 const loader = document.getElementById('loader');
                 if (loader) {
@@ -177,17 +156,13 @@
                 setLoading(false);
             };
 
-            // 1. Inizializzazione Autenticazione Firebase
             useEffect(() => {
                 const initAuth = async () => {
                     try {
-                        // Poiché stiamo utilizzando un database Firebase personalizzato (diverso da quello di default dell'ambiente),
-                        // il token di sistema (__initial_auth_token) genererà un errore di "custom-token-mismatch".
-                        // Pertanto, accediamo direttamente in modo anonimo per leggere i dati pubblici.
                         await auth.signInAnonymously();
                     } catch (error) {
                         console.error("Errore Auth:", error);
-                        nascondiLoader(); // Sblocca la UI anche in caso di errore
+                        nascondiLoader();
                     }
                 };
                 initAuth();
@@ -198,7 +173,6 @@
                 return () => unsubscribe();
             }, []);
 
-            // 2. Ascolto dati dal Database e rimozione del Loader
             useEffect(() => {
                 if (!user) return;
 
@@ -209,23 +183,21 @@
                             ...doc.data()
                         }));
                         setAutoList(cars);
-                        nascondiLoader(); // Spegne il caricamento appena arrivano i dati
+                        nascondiLoader();
                     },
                     (error) => {
                         console.error("Errore fetch:", error);
-                        nascondiLoader(); // Sblocca anche se c'è un errore di rete
+                        nascondiLoader();
                     }
                 );
 
                 return () => unsubscribe();
             }, [user]);
 
-            // Dati derivati per le opzioni dei filtri
             const marcheDisponibili = useMemo(() => [...new Set(autoList.map(a => a.marca))].sort(), [autoList]);
             const alimentazioniDisponibili = useMemo(() => [...new Set(autoList.map(a => a.alimentazione))].sort(), [autoList]);
             const cambiDisponibili = useMemo(() => [...new Set(autoList.map(a => a.cambio || 'Manuale'))].sort(), [autoList]);
 
-            // Filtraggio logico per il Piazzale
             const autoFiltrate = useMemo(() => {
                 return autoList.filter(car => {
                     const matchSearch = !filters.searchQuery || `${car.marca} ${car.modello} ${car.descrizione || ''}`.toLowerCase().includes(filters.searchQuery.toLowerCase());
@@ -241,17 +213,14 @@
                 });
             }, [autoList, filters]);
 
-            // Filtraggio semplice per la vetrina della Home (mostra max 6 auto)
             const homeAutoFiltrate = useMemo(() => {
                 return autoList.slice(0, 6);
             }, [autoList]);
 
-            // Aggiorna il titolo del documento dinamicamente
             useEffect(() => {
-                document.title = `${CONFIG.nomeConcessionaria} | ${CONFIG.citta}`;
+                document.title = `${CONFIG.nomeConcessionaria} | Showroom e Occasioni`;
             }, []);
 
-            // Effetto per gestire l'alternanza automatica delle immagini Hero (ogni 3 secondi)
             useEffect(() => {
                 if (currentPage !== 'home') return;
                 const interval = setInterval(() => {
@@ -262,7 +231,7 @@
 
             useEffect(() => {
                 if (window.lucide) window.lucide.createIcons();
-            }, [currentPage, autoList, filter, filters, selectedCar, isMobileMenuOpen, showMobileFilters]);
+            }, [currentPage, autoList, filters, selectedCar, isMobileMenuOpen, showMobileFilters]);
 
             useEffect(() => {
                 window.scrollTo(0, 0);
@@ -290,24 +259,24 @@
                     {/* Header Fisso */}
                     <header className="sticky top-0 z-50 w-full flex flex-col shadow-sm">
                         {/* Navigazione Principale */}
-                        <nav className="bg-white/95 backdrop-blur-md px-6 py-4 w-full">
+                        <nav className="bg-white/95 backdrop-blur-md px-6 py-4 w-full border-b border-[#D4AF37]/20">
                             <div className="max-w-[90rem] mx-auto flex justify-between items-center gap-4">
                                 
-                                {/* Area Loghi (Sinistra) */}
+                                {/* Logo Principale */}
                                 <div className="flex items-center gap-6 lg:gap-8 flex-shrink-0">
-                                    {/* Logo Principale */}
                                     <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setCurrentPage('home'); setSelectedCar(null); setIsMobileMenuOpen(false); }}>
-                                        <img src="Logo2.png" alt="Direzione Auto" className="h-14 md:h-18 object-contain" />
+                                        <img src="Logo.png" alt="Direzione Auto" className="h-14 md:h-18 object-contain" />
                                     </div>
                                 </div>
                                 
                                 {/* Desktop Menu (Destra) */}
                                 <div className="hidden lg:flex flex-wrap justify-end gap-x-6 gap-y-2 text-[10px] xl:text-xs font-bold uppercase tracking-widest text-slate-500 items-center">
-                                    <button onClick={() => { setCurrentPage('home'); setSelectedCar(null); }} className={`hover:text-red-600 transition ${currentPage === 'home' ? 'text-red-600' : ''}`}>Home</button>
-                                    <button onClick={() => { setCurrentPage('piazzale'); setSelectedCar(null); }} className={`hover:text-red-600 transition ${currentPage === 'piazzale' ? 'text-red-600' : ''}`}>Piazzale</button>
-                                    <button onClick={() => { setCurrentPage('vendi'); setSelectedCar(null); }} className={`hover:text-red-600 transition ${currentPage === 'vendi' ? 'text-red-600' : ''}`}>Vendi Auto</button>
-                                    <button onClick={() => { setCurrentPage('chisiamo'); setSelectedCar(null); }} className={`hover:text-red-600 transition ${currentPage === 'chisiamo' ? 'text-red-600' : ''}`}>Chi Siamo</button>
-                                    <button onClick={() => { setCurrentPage('contatti'); setSelectedCar(null); }} className={`hover:text-red-600 transition ${currentPage === 'contatti' ? 'text-red-600' : ''}`}>Contatti</button>
+                                    <button onClick={() => { setCurrentPage('home'); setSelectedCar(null); }} className={`hover:text-[#D4AF37] transition ${currentPage === 'home' ? 'text-[#D4AF37]' : ''}`}>Home</button>
+                                    <button onClick={() => { setCurrentPage('showroom'); setSelectedCar(null); }} className={`hover:text-[#D4AF37] transition ${currentPage === 'showroom' ? 'text-[#D4AF37]' : ''}`}>Showroom</button>
+                                    <button onClick={() => { setCurrentPage('vendi'); setSelectedCar(null); }} className={`hover:text-[#D4AF37] transition ${currentPage === 'vendi' ? 'text-[#D4AF37]' : ''}`}>Vendi Auto</button>
+                                    <button onClick={() => { setCurrentPage('chisiamo'); setSelectedCar(null); }} className={`hover:text-[#D4AF37] transition ${currentPage === 'chisiamo' ? 'text-[#D4AF37]' : ''}`}>Chi Siamo</button>
+                                    <button onClick={() => { setCurrentPage('lavoraconnoi'); setSelectedCar(null); }} className={`hover:text-[#D4AF37] transition ${currentPage === 'lavoraconnoi' ? 'text-[#D4AF37]' : ''}`}>Lavora con noi</button>
+                                    <button onClick={() => { setCurrentPage('contatti'); setSelectedCar(null); }} className={`hover:text-[#D4AF37] transition ${currentPage === 'contatti' ? 'text-[#D4AF37]' : ''}`}>Contatti</button>
                                 </div>
 
                                 {/* Mobile Menu Button */}
@@ -318,12 +287,13 @@
 
                             {/* Mobile Dropdown */}
                             {isMobileMenuOpen && (
-                                <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b shadow-2xl flex flex-col py-6 px-8 gap-6 text-sm font-bold uppercase tracking-widest text-slate-600 animate-in slide-in-from-top-2 duration-300">
-                                    <button onClick={() => { setCurrentPage('home'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-red-600 transition ${currentPage === 'home' ? 'text-red-600' : ''}`}>Home</button>
-                                    <button onClick={() => { setCurrentPage('piazzale'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-red-600 transition ${currentPage === 'piazzale' ? 'text-red-600' : ''}`}>Piazzale</button>
-                                    <button onClick={() => { setCurrentPage('vendi'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-red-600 transition ${currentPage === 'vendi' ? 'text-red-600' : ''}`}>Vendi Auto</button>
-                                    <button onClick={() => { setCurrentPage('chisiamo'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-red-600 transition ${currentPage === 'chisiamo' ? 'text-red-600' : ''}`}>Chi Siamo</button>
-                                    <button onClick={() => { setCurrentPage('contatti'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-red-600 transition ${currentPage === 'contatti' ? 'text-red-600' : ''}`}>Contatti</button>
+                                <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-[#D4AF37]/20 shadow-2xl flex flex-col py-6 px-8 gap-6 text-sm font-bold uppercase tracking-widest text-slate-600 animate-in slide-in-from-top-2 duration-300">
+                                    <button onClick={() => { setCurrentPage('home'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-[#D4AF37] transition ${currentPage === 'home' ? 'text-[#D4AF37]' : ''}`}>Home</button>
+                                    <button onClick={() => { setCurrentPage('showroom'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-[#D4AF37] transition ${currentPage === 'showroom' ? 'text-[#D4AF37]' : ''}`}>Showroom</button>
+                                    <button onClick={() => { setCurrentPage('vendi'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-[#D4AF37] transition ${currentPage === 'vendi' ? 'text-[#D4AF37]' : ''}`}>Vendi Auto</button>
+                                    <button onClick={() => { setCurrentPage('chisiamo'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-[#D4AF37] transition ${currentPage === 'chisiamo' ? 'text-[#D4AF37]' : ''}`}>Chi Siamo</button>
+                                    <button onClick={() => { setCurrentPage('lavoraconnoi'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-[#D4AF37] transition ${currentPage === 'lavoraconnoi' ? 'text-[#D4AF37]' : ''}`}>Lavora con noi</button>
+                                    <button onClick={() => { setCurrentPage('contatti'); setSelectedCar(null); setIsMobileMenuOpen(false); }} className={`text-left hover:text-[#D4AF37] transition ${currentPage === 'contatti' ? 'text-[#D4AF37]' : ''}`}>Contatti</button>
                                 </div>
                             )}
                         </nav>
@@ -339,7 +309,7 @@
                                             key={index}
                                             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroImage ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
                                             style={{
-                                                backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), url('${img}')`,
+                                                backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.75), rgba(0, 0, 0, 0.9)), url('${img}')`,
                                                 backgroundSize: 'cover',
                                                 backgroundPosition: 'center'
                                             }}
@@ -348,29 +318,35 @@
 
                                     {/* Contenuto Hero */}
                                     <div className="relative z-10 max-w-3xl animate-in fade-in slide-in-from-bottom-10 duration-1000">
-                                        <h1 className="text-6xl md:text-8xl font-extrabold uppercase italic tracking-tighter mb-6 drop-shadow-xl">{CONFIG.nomeConcessionaria} <span className="text-red-600">{CONFIG.citta}</span></h1>
+                                        <p className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-[#D4AF37] mb-4 drop-shadow-md">Barrafranca (Sicilia, Enna)</p>
+                                        <h1 className="text-6xl md:text-8xl font-extrabold uppercase italic tracking-tighter mb-6 drop-shadow-xl">{CONFIG.nomeConcessionaria}</h1>
                                         <p className="text-xl md:text-2xl font-light mb-10 text-slate-200 drop-shadow-md">{CONFIG.sottotitoloHero}</p>
                                         <div className="flex flex-col md:flex-row gap-4 justify-center">
-                                            <button onClick={() => setCurrentPage('piazzale')} className="bg-red-600 hover:bg-red-700 px-12 py-5 rounded-xl font-bold uppercase transition duration-300 shadow-2xl hover:scale-105 transform">Esplora il Piazzale</button>
-                                            <a href={`tel:${CONFIG.telefonoLink}`} className="bg-white/10 hover:bg-white/20 backdrop-blur-md px-12 py-5 rounded-xl font-bold uppercase transition duration-300 border border-white/20 hover:scale-105 transform">Chiama Ora</a>
+                                            <button onClick={() => setCurrentPage('showroom')} className="bg-[#D4AF37] text-black hover:bg-white hover:text-black px-12 py-5 rounded-xl font-black uppercase transition duration-300 shadow-2xl hover:scale-105 transform">Esplora lo Showroom</button>
+                                            <a href={`tel:${CONFIG.telefonoLink}`} className="bg-white/10 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] backdrop-blur-md px-12 py-5 rounded-xl font-bold uppercase transition duration-300 border border-[#D4AF37]/50 hover:scale-105 transform">Chiama Ora</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="py-20 px-6 bg-white border-y">
-                                    <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+                                <div className="py-20 px-6 bg-white border-y border-[#D4AF37]/10">
+                                    <div className="max-w-[90rem] mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
                                         <div className="flex flex-col items-center text-center group hover:-translate-y-3 transition-transform duration-500 cursor-default">
-                                            <div className="w-16 h-16 bg-red-50 text-red-600 rounded-3xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-red-600 group-hover:text-white transition-colors duration-500"><i data-lucide="shield-check" className="w-8 h-8"></i></div>
-                                            <h3 className="font-black uppercase italic text-xl mb-3">Garanzia Totale</h3>
-                                            <p className="text-slate-500 text-sm leading-relaxed">Offriamo garanzie complete fino a 36 mesi su ogni veicolo per la tua massima tranquillità.</p>
+                                            <div className="w-16 h-16 bg-[#D4AF37]/10 text-[#D4AF37] rounded-3xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-500"><i data-lucide="shield-check" className="w-8 h-8"></i></div>
+                                            <h3 className="font-black uppercase italic text-xl mb-3 text-slate-900">Garanzia Totale</h3>
+                                            <p className="text-slate-500 text-sm leading-relaxed">Offriamo garanzie complete fino a 12 mesi su ogni veicolo per la tua massima tranquillità.</p>
                                         </div>
                                         <div className="flex flex-col items-center text-center group hover:-translate-y-3 transition-transform duration-500 cursor-default">
-                                            <div className="w-16 h-16 bg-red-50 text-red-600 rounded-3xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-red-600 group-hover:text-white transition-colors duration-500"><i data-lucide="wallet" className="w-8 h-8"></i></div>
-                                            <h3 className="font-black uppercase italic text-xl mb-3">Finanziamenti</h3>
+                                            <div className="w-16 h-16 bg-[#D4AF37]/10 text-[#D4AF37] rounded-3xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-500"><i data-lucide="wallet" className="w-8 h-8"></i></div>
+                                            <h3 className="font-black uppercase italic text-xl mb-3 text-slate-900">Finanziamenti</h3>
                                             <p className="text-slate-500 text-sm leading-relaxed">Soluzioni finanziarie personalizzate e flessibili per permetterti di guidare l'auto dei tuoi sogni.</p>
                                         </div>
                                         <div className="flex flex-col items-center text-center group hover:-translate-y-3 transition-transform duration-500 cursor-default">
-                                            <div className="w-16 h-16 bg-red-50 text-red-600 rounded-3xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-red-600 group-hover:text-white transition-colors duration-500"><i data-lucide="zap" className="w-8 h-8"></i></div>
-                                            <h3 className="font-black uppercase italic text-xl mb-3">Velocità</h3>
+                                            <div className="w-16 h-16 bg-[#D4AF37]/10 text-[#D4AF37] rounded-3xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-500"><i data-lucide="car-front" className="w-8 h-8"></i></div>
+                                            <h3 className="font-black uppercase italic text-xl mb-3 text-slate-900">Noleggio No Scoring</h3>
+                                            <p className="text-slate-500 text-sm leading-relaxed">Possibilità di noleggio a lungo o breve termine senza scoring e senza l'uso di carte di credito.</p>
+                                        </div>
+                                        <div className="flex flex-col items-center text-center group hover:-translate-y-3 transition-transform duration-500 cursor-default">
+                                            <div className="w-16 h-16 bg-[#D4AF37]/10 text-[#D4AF37] rounded-3xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-500"><i data-lucide="zap" className="w-8 h-8"></i></div>
+                                            <h3 className="font-black uppercase italic text-xl mb-3 text-slate-900">Velocità</h3>
                                             <p className="text-slate-500 text-sm leading-relaxed">Pratiche rapide e compravendita sicura. Siamo operativi in tutta la zona e dintorni.</p>
                                         </div>
                                     </div>
@@ -380,26 +356,27 @@
                         
                         {currentPage === 'home' && (
                             <div className="py-16 px-6 max-w-[90rem] mx-auto">
-                                <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b pb-8">
-                                    <h2 className="text-4xl font-black uppercase italic tracking-tight flex-shrink-0">Vetrina <span className="text-red-600 underline">Occasioni</span></h2>
+                                <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-slate-200 pb-8">
+                                    <h2 className="text-4xl font-black uppercase italic tracking-tight flex-shrink-0 text-slate-900">Vetrina <span className="text-[#D4AF37] underline">Occasioni</span></h2>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
                                     {homeAutoFiltrate.map(car => (
                                         <div key={car.id} onClick={() => openCarDetails(car)} className="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition duration-500 border border-slate-100 group cursor-pointer">
                                             <div className="h-64 overflow-hidden relative">
                                                 <img src={car.immagine} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt={car.modello} />
-                                                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-slate-900 shadow-sm uppercase tracking-widest">{car.categoria}</div>
-                                                <div className="absolute bottom-4 right-4 bg-red-600 text-white px-4 py-2 rounded-2xl font-black text-xl shadow-lg">€{Number(car.prezzo)?.toLocaleString()}</div>
+                                                <div className="absolute top-4 left-4 bg-slate-900/90 text-[#D4AF37] backdrop-blur px-3 py-1 rounded-full text-[10px] font-black shadow-sm uppercase tracking-widest">{car.categoria}</div>
+                                                <div className="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-[10px] font-black shadow-lg uppercase tracking-widest">{car.condizione || "Occasione"}</div>
+                                                <div className="absolute bottom-4 right-4 bg-slate-900 text-[#D4AF37] px-4 py-2 rounded-2xl font-black text-xl shadow-lg border border-[#D4AF37]/30">€{Number(car.prezzo)?.toLocaleString()}</div>
                                             </div>
                                             <div className="p-8">
                                                 <h3 className="font-black uppercase text-2xl mb-1 tracking-tighter text-slate-900 leading-none">{car.marca}</h3>
-                                                <p className="text-red-600 font-bold uppercase text-sm mb-4">{car.modello}</p>
+                                                <p className="text-[#D4AF37] font-bold uppercase text-sm mb-4">{car.modello}</p>
                                                 <div className="flex items-center justify-between text-slate-400 text-[10px] font-bold uppercase border-t pt-4">
-                                                    <span className="flex items-center gap-1"><i data-lucide="calendar" className="w-3 h-3 text-red-600"></i> {car.anno}</span>
-                                                    <span className="flex items-center gap-1"><i data-lucide="gauge" className="w-3 h-3 text-red-600"></i> {Number(car.km)?.toLocaleString()} KM</span>
-                                                    <span className="flex items-center gap-1"><i data-lucide="fuel" className="w-3 h-3 text-red-600"></i> {car.alimentazione}</span>
+                                                    <span className="flex items-center gap-1"><i data-lucide="calendar" className="w-3 h-3 text-[#D4AF37]"></i> {car.anno}</span>
+                                                    <span className="flex items-center gap-1"><i data-lucide="gauge" className="w-3 h-3 text-[#D4AF37]"></i> {Number(car.km)?.toLocaleString()} KM</span>
+                                                    <span className="flex items-center gap-1"><i data-lucide="fuel" className="w-3 h-3 text-[#D4AF37]"></i> {car.alimentazione}</span>
                                                 </div>
-                                                <button className="w-full mt-8 bg-slate-900 text-white py-4 rounded-xl font-bold text-[11px] uppercase tracking-widest group-hover:bg-red-600 transition duration-300">Visualizza Dettagli</button>
+                                                <button className="w-full mt-8 bg-slate-900 text-white py-4 rounded-xl font-bold text-[11px] uppercase tracking-widest group-hover:bg-[#D4AF37] group-hover:text-black transition duration-300">Visualizza Dettagli</button>
                                             </div>
                                         </div>
                                     ))}
@@ -410,19 +387,19 @@
                                     )}
                                 </div>
                                 <div className="text-center">
-                                    <button onClick={() => setCurrentPage('piazzale')} className="bg-slate-900 text-white px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-red-600 transition shadow-lg">Vedi Tutto il Piazzale</button>
+                                    <button onClick={() => setCurrentPage('showroom')} className="bg-[#D4AF37] text-black px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-slate-900 hover:text-white transition shadow-lg">Vedi Tutto lo Showroom</button>
                                 </div>
                             </div>
                         )}
 
-                        {currentPage === 'piazzale' && (
+                        {currentPage === 'showroom' && (
                             <div className="py-12 px-6 max-w-[90rem] mx-auto animate-in fade-in duration-700">
-                                <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b pb-8 gap-4">
+                                <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b pb-8 gap-4 border-slate-200">
                                     <div>
-                                        <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tight text-slate-900">Il Nostro <span className="text-red-600 underline">Piazzale</span></h2>
-                                        <p className="text-slate-500 font-bold mt-2 text-sm md:text-base">Esplora {autoList.length} occasioni. Usa i filtri per trovare il veicolo perfetto per te.</p>
+                                        <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tight text-slate-900">Il Nostro <span className="text-[#D4AF37] underline">Showroom</span></h2>
+                                        <p className="text-slate-500 font-bold mt-2 text-sm md:text-base">Esplora {autoList.length} veicoli. Usa i filtri per trovare la scelta perfetta per te.</p>
                                     </div>
-                                    <button onClick={() => setShowMobileFilters(!showMobileFilters)} className="lg:hidden w-full md:w-auto flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-lg">
+                                    <button onClick={() => setShowMobileFilters(!showMobileFilters)} className="lg:hidden w-full md:w-auto flex items-center justify-center gap-2 bg-slate-900 text-[#D4AF37] px-6 py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-lg">
                                         <i data-lucide="filter" className="w-4 h-4"></i> {showMobileFilters ? 'Nascondi Filtri' : 'Mostra Filtri'}
                                     </button>
                                 </div>
@@ -431,31 +408,28 @@
                                     {/* Sidebar Filtri Avanzati */}
                                     <div className={`lg:w-1/4 w-full bg-white p-6 md:p-8 rounded-[2rem] shadow-xl border border-slate-100 sticky top-28 transition-all ${showMobileFilters ? 'block' : 'hidden lg:block'}`}>
                                         <div className="flex items-center justify-between mb-8">
-                                            <h3 className="font-black uppercase italic text-xl">Filtra <span className="text-red-600">Ricerca</span></h3>
-                                            <button onClick={resetFilters} className="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-red-600 transition underline">Resetta Tutti</button>
+                                            <h3 className="font-black uppercase italic text-xl text-slate-900">Filtra <span className="text-[#D4AF37]">Ricerca</span></h3>
+                                            <button onClick={resetFilters} className="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-[#D4AF37] transition underline">Resetta Tutti</button>
                                         </div>
                                         
                                         <div className="space-y-6">
-                                            {/* Ricerca Libera */}
                                             <div>
                                                 <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Ricerca Libera</label>
                                                 <div className="relative">
                                                     <i data-lucide="search" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
-                                                    <input type="text" name="searchQuery" value={filters.searchQuery} onChange={handleFilterChange} placeholder="Es. Golf, 500, SUV..." className="w-full bg-slate-50 pl-11 pr-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none transition" />
+                                                    <input type="text" name="searchQuery" value={filters.searchQuery} onChange={handleFilterChange} placeholder="Es. Golf, 500, SUV..." className="w-full bg-slate-50 pl-11 pr-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none transition" />
                                                 </div>
                                             </div>
-                                            {/* Marca */}
                                             <div>
                                                 <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Marca</label>
-                                                <select name="marca" value={filters.marca} onChange={handleFilterChange} className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-red-600 outline-none transition appearance-none cursor-pointer">
+                                                <select name="marca" value={filters.marca} onChange={handleFilterChange} className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-[#D4AF37] outline-none transition appearance-none cursor-pointer">
                                                     <option value="">Tutte le Marche</option>
                                                     {marcheDisponibili.map(m => <option key={m} value={m}>{m}</option>)}
                                                 </select>
                                             </div>
-                                            {/* Categoria */}
                                             <div>
                                                 <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Categoria</label>
-                                                <select name="categoria" value={filters.categoria} onChange={handleFilterChange} className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-red-600 outline-none transition appearance-none cursor-pointer">
+                                                <select name="categoria" value={filters.categoria} onChange={handleFilterChange} className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-[#D4AF37] outline-none transition appearance-none cursor-pointer">
                                                     <option value="Tutte">Tutte le Categorie</option>
                                                     <option value="SUV">SUV</option>
                                                     <option value="Berlina">Berlina</option>
@@ -471,41 +445,36 @@
                                                     <option value="Altri Veicoli">Altri Veicoli</option>
                                                 </select>
                                             </div>
-                                            {/* Prezzo Max */}
                                             <div>
                                                 <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Prezzo Massimo (€)</label>
-                                                <input type="number" name="prezzoMax" value={filters.prezzoMax} onChange={handleFilterChange} placeholder="Nessun limite" className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-red-600 outline-none transition" />
+                                                <input type="number" name="prezzoMax" value={filters.prezzoMax} onChange={handleFilterChange} placeholder="Nessun limite" className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-[#D4AF37] outline-none transition" />
                                             </div>
-                                            {/* Anno Minimo */}
                                             <div>
-                                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Anno Minimo Immatricolazione</label>
-                                                <input type="number" name="annoMin" value={filters.annoMin} onChange={handleFilterChange} placeholder="Es. 2018" className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-red-600 outline-none transition" />
+                                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Anno Minimo</label>
+                                                <input type="number" name="annoMin" value={filters.annoMin} onChange={handleFilterChange} placeholder="Es. 2018" className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-[#D4AF37] outline-none transition" />
                                             </div>
-                                            {/* KM Massimi */}
                                             <div>
-                                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Chilometraggio Massimo</label>
-                                                <input type="number" name="kmMax" value={filters.kmMax} onChange={handleFilterChange} placeholder="Nessun limite" className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-red-600 outline-none transition" />
+                                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Km Massimi</label>
+                                                <input type="number" name="kmMax" value={filters.kmMax} onChange={handleFilterChange} placeholder="Nessun limite" className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-[#D4AF37] outline-none transition" />
                                             </div>
-                                            {/* Alimentazione */}
                                             <div>
                                                 <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Alimentazione</label>
-                                                <select name="alimentazione" value={filters.alimentazione} onChange={handleFilterChange} className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-red-600 outline-none transition appearance-none cursor-pointer">
-                                                    <option value="">Tutte le alimentazioni</option>
+                                                <select name="alimentazione" value={filters.alimentazione} onChange={handleFilterChange} className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-[#D4AF37] outline-none transition appearance-none cursor-pointer">
+                                                    <option value="">Tutte</option>
                                                     {alimentazioniDisponibili.map(a => <option key={a} value={a}>{a}</option>)}
                                                 </select>
                                             </div>
-                                            {/* Cambio */}
                                             <div>
-                                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Tipologia Cambio</label>
-                                                <select name="cambio" value={filters.cambio} onChange={handleFilterChange} className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-red-600 outline-none transition appearance-none cursor-pointer">
-                                                    <option value="">Qualsiasi cambio</option>
+                                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Cambio</label>
+                                                <select name="cambio" value={filters.cambio} onChange={handleFilterChange} className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 focus:border-[#D4AF37] outline-none transition appearance-none cursor-pointer">
+                                                    <option value="">Qualsiasi</option>
                                                     {cambiDisponibili.map(c => <option key={c} value={c}>{c}</option>)}
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
 
-                                    {/* Griglia Auto (Piazzale) */}
+                                    {/* Griglia Auto (Showroom) */}
                                     <div className="lg:w-3/4 w-full">
                                         {autoFiltrate.length === 0 ? (
                                             <div className="bg-white p-12 rounded-[3rem] text-center shadow-xl border border-slate-100 flex flex-col items-center justify-center min-h-[400px]">
@@ -514,7 +483,7 @@
                                                 </div>
                                                 <h3 className="text-3xl font-black uppercase italic text-slate-900 mb-4 tracking-tight">Nessun veicolo trovato</h3>
                                                 <p className="text-slate-500 font-bold mb-8 max-w-md mx-auto">Non ci sono mezzi che corrispondono esattamente ai filtri selezionati. Prova ad ampliare la tua ricerca.</p>
-                                                <button onClick={resetFilters} className="bg-red-600 text-white px-10 py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-lg hover:bg-red-700 transition transform hover:-translate-y-1">Azzera tutti i filtri</button>
+                                                <button onClick={resetFilters} className="bg-slate-900 text-[#D4AF37] px-10 py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-lg hover:bg-[#D4AF37] hover:text-black transition transform hover:-translate-y-1">Azzera tutti i filtri</button>
                                             </div>
                                         ) : (
                                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -522,18 +491,19 @@
                                                     <div key={car.id} onClick={() => openCarDetails(car)} className="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition duration-500 border border-slate-100 group cursor-pointer flex flex-col h-full">
                                                         <div className="h-56 overflow-hidden relative flex-shrink-0">
                                                             <img src={car.immagine} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt={car.modello} />
-                                                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-slate-900 shadow-sm uppercase tracking-widest truncate max-w-[80%]">{car.categoria}</div>
-                                                            <div className="absolute bottom-4 right-4 bg-red-600 text-white px-4 py-2 rounded-xl font-black text-lg shadow-lg">€{Number(car.prezzo)?.toLocaleString()}</div>
+                                                            <div className="absolute top-4 left-4 bg-slate-900/90 text-[#D4AF37] backdrop-blur px-3 py-1 rounded-full text-[10px] font-black shadow-sm uppercase tracking-widest truncate max-w-[80%]">{car.categoria}</div>
+                                                            <div className="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-[10px] font-black shadow-lg uppercase tracking-widest">{car.condizione || "Occasione"}</div>
+                                                            <div className="absolute bottom-4 right-4 bg-slate-900 text-[#D4AF37] px-4 py-2 rounded-xl font-black text-lg shadow-lg border border-[#D4AF37]/30">€{Number(car.prezzo)?.toLocaleString()}</div>
                                                         </div>
                                                         <div className="p-6 flex-grow flex flex-col">
                                                             <h3 className="font-black uppercase text-xl mb-1 tracking-tighter text-slate-900 leading-none">{car.marca}</h3>
-                                                            <p className="text-red-600 font-bold uppercase text-xs mb-4 line-clamp-1">{car.modello}</p>
+                                                            <p className="text-[#D4AF37] font-bold uppercase text-xs mb-4 line-clamp-1">{car.modello}</p>
                                                             <div className="flex items-center justify-between text-slate-400 text-[9px] font-bold uppercase border-t pt-4 mt-auto">
-                                                                <span className="flex items-center gap-1"><i data-lucide="calendar" className="w-3 h-3 text-red-600"></i> {car.anno}</span>
-                                                                <span className="flex items-center gap-1"><i data-lucide="gauge" className="w-3 h-3 text-red-600"></i> {Number(car.km)?.toLocaleString()} KM</span>
-                                                                <span className="flex items-center gap-1"><i data-lucide="fuel" className="w-3 h-3 text-red-600"></i> {car.alimentazione}</span>
+                                                                <span className="flex items-center gap-1"><i data-lucide="calendar" className="w-3 h-3 text-[#D4AF37]"></i> {car.anno}</span>
+                                                                <span className="flex items-center gap-1"><i data-lucide="gauge" className="w-3 h-3 text-[#D4AF37]"></i> {Number(car.km)?.toLocaleString()} KM</span>
+                                                                <span className="flex items-center gap-1"><i data-lucide="fuel" className="w-3 h-3 text-[#D4AF37]"></i> {car.alimentazione}</span>
                                                             </div>
-                                                            <button className="w-full mt-6 bg-slate-900 text-white py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest group-hover:bg-red-600 transition duration-300">Scopri Dettagli</button>
+                                                            <button className="w-full mt-6 bg-slate-900 text-white py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest group-hover:bg-[#D4AF37] group-hover:text-black transition duration-300">Scopri Dettagli</button>
                                                         </div>
                                                     </div>
                                                 ))}
@@ -546,8 +516,8 @@
 
                         {currentPage === 'prodotto' && selectedCar && (
                             <div className="py-12 px-6 max-w-7xl mx-auto animate-in fade-in duration-500">
-                                <button onClick={() => setCurrentPage('piazzale')} className="flex items-center gap-2 text-slate-500 font-bold uppercase text-xs mb-8 hover:text-red-600 transition">
-                                    <i data-lucide="arrow-left" className="w-4 h-4"></i> Torna al piazzale
+                                <button onClick={() => setCurrentPage('showroom')} className="flex items-center gap-2 text-slate-500 font-bold uppercase text-xs mb-8 hover:text-[#D4AF37] transition">
+                                    <i data-lucide="arrow-left" className="w-4 h-4"></i> Torna allo Showroom
                                 </button>
                                 
                                 <div className="grid lg:grid-cols-2 gap-12 mb-16">
@@ -561,7 +531,7 @@
                                                     <div 
                                                         key={idx} 
                                                         onClick={() => setActiveImage(img)}
-                                                        className={`flex-shrink-0 w-24 h-24 rounded-2xl overflow-hidden cursor-pointer border-4 transition ${activeImage === img ? 'border-red-600 shadow-lg' : 'border-white opacity-70 hover:opacity-100'}`}
+                                                        className={`flex-shrink-0 w-24 h-24 rounded-2xl overflow-hidden cursor-pointer border-4 transition ${activeImage === img ? 'border-[#D4AF37] shadow-lg' : 'border-white opacity-70 hover:opacity-100'}`}
                                                     >
                                                         <img src={img} className="w-full h-full object-cover" />
                                                     </div>
@@ -571,29 +541,32 @@
                                     </div>
 
                                     <div className="flex flex-col overflow-hidden w-full max-w-full">
-                                        <span className="bg-red-100 text-red-600 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest w-fit mb-4">{selectedCar.categoria}</span>
+                                        <div className="flex gap-2 mb-4 flex-wrap">
+                                            <span className="bg-slate-900 text-[#D4AF37] px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest w-fit border border-[#D4AF37]/30">{selectedCar.categoria}</span>
+                                            <span className="bg-[#D4AF37] text-black px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest w-fit">{selectedCar.condizione || 'Occasione'}</span>
+                                        </div>
                                         <h1 className="text-5xl font-black uppercase italic tracking-tighter text-slate-900 leading-none mb-2 break-words">{selectedCar.marca}</h1>
-                                        <p className="text-2xl text-red-600 font-bold uppercase mb-6 break-words">{selectedCar.modello}</p>
+                                        <p className="text-2xl text-[#D4AF37] font-bold uppercase mb-6 break-words">{selectedCar.modello}</p>
                                         <div className="text-4xl font-black text-slate-900 mb-8 italic">€ {Number(selectedCar.prezzo)?.toLocaleString()}</div>
                                         
                                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
                                             <div className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                                                <i data-lucide="calendar" className="w-4 h-4 text-red-600 mb-2"></i>
+                                                <i data-lucide="calendar" className="w-4 h-4 text-[#D4AF37] mb-2"></i>
                                                 <p className="text-[9px] font-bold text-slate-400 uppercase">Anno</p>
                                                 <p className="font-black text-md text-slate-900">{selectedCar.anno}</p>
                                             </div>
                                             <div className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                                                <i data-lucide="gauge" className="w-4 h-4 text-red-600 mb-2"></i>
+                                                <i data-lucide="gauge" className="w-4 h-4 text-[#D4AF37] mb-2"></i>
                                                 <p className="text-[9px] font-bold text-slate-400 uppercase">Km</p>
                                                 <p className="font-black text-md text-slate-900">{Number(selectedCar.km)?.toLocaleString()}</p>
                                             </div>
                                             <div className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                                                <i data-lucide="fuel" className="w-4 h-4 text-red-600 mb-2"></i>
+                                                <i data-lucide="fuel" className="w-4 h-4 text-[#D4AF37] mb-2"></i>
                                                 <p className="text-[9px] font-bold text-slate-400 uppercase">Alim.</p>
                                                 <p className="font-black text-md text-slate-900 truncate w-full">{selectedCar.alimentazione}</p>
                                             </div>
                                             <div className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                                                <i data-lucide="settings-2" className="w-4 h-4 text-red-600 mb-2"></i>
+                                                <i data-lucide="settings-2" className="w-4 h-4 text-[#D4AF37] mb-2"></i>
                                                 <p className="text-[9px] font-bold text-slate-400 uppercase">Cambio</p>
                                                 <p className="font-black text-md text-slate-900">{selectedCar.cambio || 'Manuale'}</p>
                                             </div>
@@ -601,14 +574,14 @@
 
                                         <div className="space-y-4 w-full">
                                             <a href={`https://wa.me/${CONFIG.whatsappNumber}?text=Buongiorno, vorrei informazioni sulla ${selectedCar.marca} ${selectedCar.modello} vista sul sito.`} target="_blank" className="w-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center gap-3 py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition shadow-lg"><i data-lucide="message-circle" className="w-5 h-5"></i>WhatsApp</a>
-                                            <a href={`tel:${CONFIG.telefonoLink}`} className="w-full bg-slate-900 hover:bg-red-600 text-white flex items-center justify-center gap-3 py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition shadow-lg"><i data-lucide="phone" className="w-5 h-5"></i>Chiama Ora</a>
+                                            <a href={`tel:${CONFIG.telefonoLink}`} className="w-full bg-slate-900 hover:bg-[#D4AF37] hover:text-black text-white flex items-center justify-center gap-3 py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition shadow-lg"><i data-lucide="phone" className="w-5 h-5"></i>Chiama Ora</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="grid lg:grid-cols-3 gap-12 border-t pt-16">
+                                <div className="grid lg:grid-cols-3 gap-12 border-t border-slate-200 pt-16">
                                     <div className="lg:col-span-2 overflow-hidden max-w-full">
-                                        <h3 className="text-2xl font-black uppercase italic mb-6 text-slate-900">Descrizione <span className="text-red-600">Completa</span></h3>
+                                        <h3 className="text-2xl font-black uppercase italic mb-6 text-slate-900">Descrizione <span className="text-[#D4AF37]">Completa</span></h3>
                                         <div className="bg-white p-6 md:p-8 rounded-[2rem] border border-slate-100 shadow-sm">
                                             <p className="text-slate-600 leading-relaxed whitespace-pre-line text-sm md:text-base break-words">
                                                 {selectedCar.descrizione || "Nessuna descrizione dettagliata fornita per questo veicolo."}
@@ -616,12 +589,12 @@
                                         </div>
                                     </div>
                                     <div className="space-y-8 w-full max-w-full">
-                                        <h3 className="text-2xl font-black uppercase italic mb-6 text-slate-900">Scheda <span className="text-red-600">Tecnica</span></h3>
-                                        <div className="bg-slate-900 text-white p-6 md:p-8 rounded-[2rem] shadow-xl w-full">
+                                        <h3 className="text-2xl font-black uppercase italic mb-6 text-slate-900">Scheda <span className="text-[#D4AF37]">Tecnica</span></h3>
+                                        <div className="bg-slate-900 text-white p-6 md:p-8 rounded-[2rem] shadow-xl w-full border border-[#D4AF37]/20">
                                             <ul className="space-y-5 text-xs md:text-sm uppercase font-bold tracking-wider">
                                                 <li className="flex justify-between border-b border-white/10 pb-2">
                                                     <span className="text-slate-400">Marca</span>
-                                                    <span className="text-right ml-2">{selectedCar.marca}</span>
+                                                    <span className="text-right ml-2 text-[#D4AF37]">{selectedCar.marca}</span>
                                                 </li>
                                                 <li className="flex justify-between border-b border-white/10 pb-2">
                                                     <span className="text-slate-400">Modello</span>
@@ -662,96 +635,51 @@
                             </div>
                         )}
 
-                        {currentPage === 'amway' && (
-                            <div className="py-24 px-6 max-w-7xl mx-auto animate-in fade-in duration-700">
-                                <div className="text-center mb-16">
-                                    <img src={LOGO_AMWAY} alt="Amway Logo" className="h-24 md:h-32 mx-auto mb-8 object-contain" />
-                                    <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-slate-900 mb-6">Opportunità <span className="text-red-600">Amway</span></h2>
-                                    <p className="text-xl text-slate-500 font-bold max-w-3xl mx-auto">
-                                        Lavorare con Amway è una scelta che viene proposta come un'opportunità di imprenditoria nel settore del network marketing, offrendo la possibilità di vendere prodotti di bellezza, casa e nutrizione (in particolare con il marchio Nutrilite).
-                                    </p>
-                                </div>
-                                
-                                <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 max-w-4xl mx-auto">
-                                     <h3 className="text-2xl font-black uppercase italic mb-8 text-slate-900 border-b pb-4">Le principali motivazioni per intraprendere questa attività:</h3>
-                                     
-                                     <div className="space-y-6 mb-12">
-                                         <div className="flex gap-4">
-                                             <div className="bg-red-50 p-3 rounded-xl h-fit text-red-600"><i data-lucide="clock" className="w-6 h-6"></i></div>
-                                             <div>
-                                                 <h4 className="font-bold text-lg text-slate-900">Flessibilità e Autonomia</h4>
-                                                 <p className="text-slate-600 leading-relaxed">La possibilità di gestire il proprio tempo e lavorare in modo indipendente.</p>
-                                             </div>
-                                         </div>
-                                         <div className="flex gap-4">
-                                             <div className="bg-red-50 p-3 rounded-xl h-fit text-red-600"><i data-lucide="trending-down" className="w-6 h-6"></i></div>
-                                             <div>
-                                                 <h4 className="font-bold text-lg text-slate-900">Basso Rischio e Costi Contenuti</h4>
-                                                 <p className="text-slate-600 leading-relaxed">Avviare l'attività richiede investimenti iniziali limitati, rendendola accessibile.</p>
-                                             </div>
-                                         </div>
-                                         <div className="flex gap-4">
-                                             <div className="bg-red-50 p-3 rounded-xl h-fit text-red-600"><i data-lucide="coins" className="w-6 h-6"></i></div>
-                                             <div>
-                                                 <h4 className="font-bold text-lg text-slate-900">Guadagni Aggiuntivi</h4>
-                                                 <p className="text-slate-600 leading-relaxed">Opportunità di ottenere entrate extra basate sulle vendite dirette e sulla creazione di una rete.</p>
-                                             </div>
-                                         </div>
-                                         <div className="flex gap-4">
-                                             <div className="bg-red-50 p-3 rounded-xl h-fit text-red-600"><i data-lucide="graduation-cap" className="w-6 h-6"></i></div>
-                                             <div>
-                                                 <h4 className="font-bold text-lg text-slate-900">Formazione e Supporto</h4>
-                                                 <p className="text-slate-600 leading-relaxed">Accesso a programmi di formazione e supporto da parte della comunità Amway.</p>
-                                             </div>
-                                         </div>
-                                         <div className="flex gap-4">
-                                             <div className="bg-red-50 p-3 rounded-xl h-fit text-red-600"><i data-lucide="building-2" className="w-6 h-6"></i></div>
-                                             <div>
-                                                 <h4 className="font-bold text-lg text-slate-900">Azienda Affermata</h4>
-                                                 <p className="text-slate-600 leading-relaxed">Amway è una realtà solida e consolidata nel panorama globale.</p>
-                                             </div>
-                                         </div>
-                                     </div>
-
-                                     <div className="text-center">
-                                         <a href={`https://wa.me/${CONFIG.whatsappNumber}?text=Buongiorno, vorrei richiedere maggiori informazioni sulle opportunità e i prodotti Amway.`} target="_blank" className="inline-flex bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition shadow-lg items-center justify-center gap-2"><i data-lucide="message-circle" className="w-4 h-4"></i> Richiedi Info su WhatsApp</a>
-                                     </div>
+                        {currentPage === 'lavoraconnoi' && (
+                            <div className="py-24 px-6 max-w-5xl mx-auto animate-in fade-in duration-700 text-center">
+                                <h2 className="text-5xl md:text-6xl font-black uppercase italic tracking-tighter text-slate-900 mb-8">Lavora con <span className="text-[#D4AF37]">Noi</span></h2>
+                                <p className="text-xl text-slate-500 font-bold max-w-3xl mx-auto mb-16">
+                                    Entra a far parte del nostro Gruppo. Siamo alla continua ricerca di talenti dinamici, appassionati di motori e propensi alle vendite e al contatto col pubblico. Non esitare a contattarci per fissare un colloquio!
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-3xl mx-auto">
+                                    <a href={`https://wa.me/${CONFIG.whatsappNumber}?text=Buongiorno, vorrei inviare la mia candidatura per lavorare con voi nel vostro Gruppo.`} target="_blank" className="w-full sm:w-1/2 bg-green-500 hover:bg-green-600 text-white flex items-center justify-center gap-3 py-6 rounded-2xl font-black uppercase text-sm tracking-widest transition shadow-lg transform hover:-translate-y-1"><i data-lucide="message-circle" className="w-6 h-6"></i>WhatsApp</a>
+                                    <a href={`tel:${CONFIG.telefonoLink}`} className="w-full sm:w-1/2 bg-slate-900 hover:bg-[#D4AF37] hover:text-black text-white flex items-center justify-center gap-3 py-6 rounded-2xl font-black uppercase text-sm tracking-widest transition shadow-lg transform hover:-translate-y-1"><i data-lucide="phone" className="w-6 h-6"></i>Chiama Ora</a>
                                 </div>
                             </div>
                         )}
 
                         {currentPage === 'contatti' && (
                             <div className="py-24 px-6 max-w-5xl mx-auto animate-in fade-in duration-700">
-                                <h2 className="text-5xl font-black uppercase italic mb-16 text-center">Contattaci</h2>
+                                <h2 className="text-5xl font-black uppercase italic mb-16 text-center text-slate-900">Contattaci</h2>
                                 <div className="grid md:grid-cols-2 gap-16 items-start">
                                     <div className="space-y-10">
                                         <div className="flex gap-6 items-start">
-                                            <div className="bg-red-50 p-4 rounded-2xl text-red-600 shadow-sm"><i data-lucide="map-pin" className="w-6 h-6"></i></div>
+                                            <div className="bg-[#D4AF37]/10 p-4 rounded-2xl text-[#D4AF37] shadow-sm"><i data-lucide="map-pin" className="w-6 h-6"></i></div>
                                             <div>
                                                 <h4 className="font-black uppercase text-xs tracking-widest text-slate-400 mb-2">Sede Principale</h4>
                                                 <p className="text-xl font-bold text-slate-900 leading-tight">{CONFIG.indirizzo}<br/>{CONFIG.cap} {CONFIG.citta} ({CONFIG.provinciaBreve})</p>
                                             </div>
                                         </div>
                                         <div className="flex gap-6 items-start">
-                                            <div className="bg-red-50 p-4 rounded-2xl text-red-600 shadow-sm"><i data-lucide="mail" className="w-6 h-6"></i></div>
+                                            <div className="bg-[#D4AF37]/10 p-4 rounded-2xl text-[#D4AF37] shadow-sm"><i data-lucide="mail" className="w-6 h-6"></i></div>
                                             <div>
                                                 <h4 className="font-black uppercase text-xs tracking-widest text-slate-400 mb-2">Email Ufficiale</h4>
                                                 <p className="text-xl font-bold text-slate-900 break-all">{CONFIG.email}</p>
                                             </div>
                                         </div>
                                         <div className="flex gap-6 items-start">
-                                            <div className="bg-red-50 p-4 rounded-2xl text-red-600 shadow-sm"><i data-lucide="phone" className="w-6 h-6"></i></div>
+                                            <div className="bg-[#D4AF37]/10 p-4 rounded-2xl text-[#D4AF37] shadow-sm"><i data-lucide="phone" className="w-6 h-6"></i></div>
                                             <div>
                                                 <h4 className="font-black uppercase text-xs tracking-widest text-slate-400 mb-2">Linea Diretta</h4>
                                                 <p className="text-2xl font-black text-slate-900">{CONFIG.telefonoMostrato}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 flex flex-col items-center text-center justify-center min-h-[300px]">
+                                    <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-[#D4AF37]/20 flex flex-col items-center text-center justify-center min-h-[300px]">
                                         <h3 className="text-3xl font-black uppercase italic mb-8 text-slate-900 tracking-tighter">Social Network</h3>
                                         <div className="flex flex-col gap-4 w-full">
                                             {CONFIG.social.instagram && (
-                                                <a href={CONFIG.social.instagram} target="_blank" className="bg-slate-900 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-4 hover:bg-red-600 transition shadow-lg transform hover:-translate-y-1">
+                                                <a href={CONFIG.social.instagram} target="_blank" className="bg-slate-900 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-4 hover:bg-[#D4AF37] hover:text-black transition shadow-lg transform hover:-translate-y-1">
                                                     <img src={IG_ICON} className="w-5 h-5" alt="Instagram" /> Instagram
                                                 </a>
                                             )}
@@ -761,7 +689,7 @@
                                                 </a>
                                             )}
                                             {CONFIG.social.autosupermarket && (
-                                                <a href={CONFIG.social.autosupermarket} target="_blank" className="bg-red-600 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-4 hover:bg-red-700 transition shadow-lg transform hover:-translate-y-1">
+                                                <a href={CONFIG.social.autosupermarket} target="_blank" className="bg-slate-900 text-[#D4AF37] py-5 rounded-2xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-4 hover:bg-[#D4AF37] hover:text-black transition shadow-lg transform hover:-translate-y-1">
                                                     <img src={LOGO_AUTOSUPERMARKET} className="w-6 h-6 rounded-md bg-white p-0.5" alt="Autosupermarket" /> Autosupermarket
                                                 </a>
                                             )}
@@ -773,7 +701,7 @@
 
                         {currentPage === 'vendi' && (
                             <div className="py-24 px-6 max-w-5xl mx-auto animate-in fade-in duration-700">
-                                <h2 className="text-5xl font-black uppercase italic mb-8 text-center">Vendi la tua <span className="text-red-600">Auto</span></h2>
+                                <h2 className="text-5xl font-black uppercase italic mb-8 text-center text-slate-900">Vendi la tua <span className="text-[#D4AF37]">Auto</span></h2>
                                 <p className="text-center text-slate-500 font-bold mb-12 text-sm">Compila il modulo sottostante con i dati del tuo veicolo per ricevere una valutazione gratuita e senza impegno.</p>
                                 <div className="bg-white p-4 md:p-8 rounded-[3rem] shadow-xl border border-slate-100 flex justify-center w-full h-[900px]">
                                     <iframe 
@@ -792,7 +720,7 @@
                         {currentPage === 'chisiamo' && (
                             <div className="py-24 px-6 max-w-7xl mx-auto animate-in fade-in duration-700">
                                 <div className="text-center mb-16">
-                                    <h2 className="text-5xl md:text-6xl font-black uppercase italic tracking-tighter text-slate-900 mb-6">Chi <span className="text-red-600">Siamo</span></h2>
+                                    <h2 className="text-5xl md:text-6xl font-black uppercase italic tracking-tighter text-slate-900 mb-6">Chi <span className="text-[#D4AF37]">Siamo</span></h2>
                                     <p className="text-xl text-slate-500 font-bold max-w-3xl mx-auto">La passione per i motori al tuo servizio. Scopri la storia di {CONFIG.nomeConcessionaria} e il nostro impegno per garantirti sempre il meglio.</p>
                                 </div>
 
@@ -802,17 +730,17 @@
                                         <p className="text-slate-600 leading-relaxed text-lg" dangerouslySetInnerHTML={{__html: CONFIG.chiSiamo.paragrafo1}}></p>
                                         <p className="text-slate-600 leading-relaxed text-lg" dangerouslySetInnerHTML={{__html: CONFIG.chiSiamo.paragrafo2}}></p>
                                     </div>
-                                    <div className="bg-slate-900 rounded-[3rem] p-8 md:p-12 shadow-2xl text-white relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 p-8 opacity-10"><i data-lucide="quote" className="w-24 h-24"></i></div>
+                                    <div className="bg-slate-900 rounded-[3rem] p-8 md:p-12 shadow-2xl text-white relative overflow-hidden border border-[#D4AF37]/20">
+                                        <div className="absolute top-0 right-0 p-8 opacity-10 text-[#D4AF37]"><i data-lucide="quote" className="w-24 h-24"></i></div>
                                         <div className="relative z-10">
-                                            <i data-lucide="car" className="w-12 h-12 text-red-600 mb-6"></i>
+                                            <i data-lucide="car" className="w-12 h-12 text-[#D4AF37] mb-6"></i>
                                             <p className="text-xl md:text-2xl font-light italic leading-relaxed mb-8">
                                                 "{CONFIG.chiSiamo.citazione}"
                                             </p>
                                             <div className="flex items-center gap-4">
-                                                <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center font-black text-xl">{CONFIG.chiSiamo.inizialeFondatore}</div>
+                                                <div className="w-12 h-12 bg-[#D4AF37] text-black rounded-full flex items-center justify-center font-black text-xl">{CONFIG.chiSiamo.inizialeFondatore}</div>
                                                 <div>
-                                                    <p className="font-bold uppercase tracking-widest text-xs">{CONFIG.chiSiamo.nomeFondatore}</p>
+                                                    <p className="font-bold uppercase tracking-widest text-xs text-[#D4AF37]">{CONFIG.chiSiamo.nomeFondatore}</p>
                                                     <p className="text-slate-400 text-[10px] uppercase tracking-widest">{CONFIG.chiSiamo.ruoloFondatore}</p>
                                                 </div>
                                             </div>
@@ -821,19 +749,19 @@
                                 </div>
 
                                 <div className="grid md:grid-cols-3 gap-8">
-                                    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl transition duration-300">
-                                        <div className="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="search-check" className="w-6 h-6"></i></div>
-                                        <h4 className="text-xl font-black uppercase italic mb-3">Selezione Rigorosa</h4>
+                                    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-[#D4AF37]/10 hover:shadow-xl transition duration-300">
+                                        <div className="w-14 h-14 bg-[#D4AF37]/10 text-[#D4AF37] rounded-2xl flex items-center justify-center mb-6"><i data-lucide="search-check" className="w-6 h-6"></i></div>
+                                        <h4 className="text-xl font-black uppercase italic mb-3 text-slate-900">Selezione Rigorosa</h4>
                                         <p className="text-slate-500 leading-relaxed text-sm">Ogni auto proposta viene sottoposta a minuziosi controlli e revisioni complete dai nostri esperti, per assicurarti un acquisto sereno e assolutamente senza sorprese.</p>
                                     </div>
-                                    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl transition duration-300">
-                                        <div className="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="handshake" className="w-6 h-6"></i></div>
-                                        <h4 className="text-xl font-black uppercase italic mb-3">Trasparenza</h4>
+                                    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-[#D4AF37]/10 hover:shadow-xl transition duration-300">
+                                        <div className="w-14 h-14 bg-[#D4AF37]/10 text-[#D4AF37] rounded-2xl flex items-center justify-center mb-6"><i data-lucide="handshake" className="w-6 h-6"></i></div>
+                                        <h4 className="text-xl font-black uppercase italic mb-3 text-slate-900">Trasparenza</h4>
                                         <p className="text-slate-500 leading-relaxed text-sm">Crediamo in un rapporto di onestà e fiducia. Nessun costo nascosto o dettaglio omesso: ti forniamo tutta la cronologia e la verità sugli interventi del veicolo.</p>
                                     </div>
-                                    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl transition duration-300">
-                                        <div className="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="shield-alert" className="w-6 h-6"></i></div>
-                                        <h4 className="text-xl font-black uppercase italic mb-3">Sicurezza Garantita</h4>
+                                    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-[#D4AF37]/10 hover:shadow-xl transition duration-300">
+                                        <div className="w-14 h-14 bg-[#D4AF37]/10 text-[#D4AF37] rounded-2xl flex items-center justify-center mb-6"><i data-lucide="shield-alert" className="w-6 h-6"></i></div>
+                                        <h4 className="text-xl font-black uppercase italic mb-3 text-slate-900">Sicurezza Garantita</h4>
                                         <p className="text-slate-500 leading-relaxed text-sm">La tua tranquillità su strada è la nostra priorità. Mettiamo a disposizione garanzie su misura e assistenza dedicata, guidandoti dall'acquisto al post-vendita.</p>
                                     </div>
                                 </div>
@@ -841,46 +769,46 @@
                         )}
                     </main>
 
-                    <footer className="bg-slate-950 text-white py-16 px-6 mt-auto">
+                    <footer className="bg-slate-950 text-white py-16 px-6 mt-auto border-t-[6px] border-[#D4AF37]">
                         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 border-b border-white/10 pb-12 mb-8">
                             <div>
-                                <h4 className="font-black uppercase italic text-2xl mb-4">{CONFIG.nomeConcessionaria} <span className="text-red-600">{CONFIG.citta}</span></h4>
+                                <h4 className="font-black uppercase italic text-2xl mb-4">{CONFIG.nomeConcessionaria} <span className="text-[#D4AF37]">{CONFIG.citta}</span></h4>
                                 <p className="text-slate-400 text-sm leading-relaxed mb-6 italic">{CONFIG.descrizioneFooter}</p>
                                 <div className="flex gap-4">
                                     {CONFIG.social.instagram && (
-                                        <a href={CONFIG.social.instagram} target="_blank" className="social-link w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all hover:bg-white/10 hover:border-red-500/50">
+                                        <a href={CONFIG.social.instagram} target="_blank" className="social-link w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all hover:bg-white/10 hover:border-[#D4AF37]">
                                             <img src={IG_ICON} className="social-icon-img" alt="Instagram" />
                                         </a>
                                     )}
                                     {CONFIG.social.facebook && (
-                                        <a href={CONFIG.social.facebook} target="_blank" className="social-link w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all hover:bg-white/10 hover:border-blue-500/50">
+                                        <a href={CONFIG.social.facebook} target="_blank" className="social-link w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all hover:bg-[#1877F2] hover:border-transparent">
                                             <img src={FB_ICON} className="social-icon-img" alt="Facebook" />
                                         </a>
                                     )}
                                     {CONFIG.social.autosupermarket && (
-                                        <a href={CONFIG.social.autosupermarket} target="_blank" className="social-link w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all hover:bg-white/10 hover:border-red-500/50 text-white">
+                                        <a href={CONFIG.social.autosupermarket} target="_blank" className="social-link w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all hover:bg-[#D4AF37] hover:border-transparent">
                                             <img src={LOGO_AUTOSUPERMARKET} className="social-icon-img rounded-md bg-white p-0.5" alt="Autosupermarket" />
                                         </a>
                                     )}
                                 </div>
                             </div>
                             <div className="space-y-4">
-                                <h5 className="font-bold uppercase text-xs tracking-widest text-red-600">Contatti Rapidi</h5>
+                                <h5 className="font-bold uppercase text-xs tracking-widest text-[#D4AF37]">Contatti Rapidi</h5>
                                 <div className="flex flex-col gap-3">
                                     <a href={`tel:${CONFIG.telefonoLink}`} className="text-slate-300 font-bold hover:text-white transition flex items-center gap-3">
-                                        <div className="bg-white/5 p-2 rounded-lg"><i data-lucide="phone" className="w-4 h-4"></i></div> 
+                                        <div className="bg-[#D4AF37]/20 text-[#D4AF37] p-2 rounded-lg"><i data-lucide="phone" className="w-4 h-4"></i></div> 
                                         {CONFIG.telefonoMostrato}
                                     </a>
                                     <a href={`mailto:${CONFIG.email}`} className="text-slate-300 font-bold hover:text-white transition flex items-center gap-3 break-all">
-                                        <div className="bg-white/5 p-2 rounded-lg"><i data-lucide="mail" className="w-4 h-4"></i></div> 
+                                        <div className="bg-[#D4AF37]/20 text-[#D4AF37] p-2 rounded-lg"><i data-lucide="mail" className="w-4 h-4"></i></div> 
                                         {CONFIG.email}
                                     </a>
                                 </div>
                             </div>
                             <div className="space-y-4">
-                                <h5 className="font-bold uppercase text-xs tracking-widest text-red-600">Sede Operativa</h5>
+                                <h5 className="font-bold uppercase text-xs tracking-widest text-[#D4AF37]">Sede Operativa</h5>
                                 <p className="text-slate-300 font-bold flex items-start gap-3">
-                                    <div className="bg-white/5 p-2 rounded-lg"><i data-lucide="map-pin" className="w-4 h-4"></i></div>
+                                    <div className="bg-[#D4AF37]/20 text-[#D4AF37] p-2 rounded-lg"><i data-lucide="map-pin" className="w-4 h-4"></i></div>
                                     <span>{CONFIG.indirizzo}<br/><span className="text-slate-500 font-medium">{CONFIG.cap} {CONFIG.citta} ({CONFIG.provinciaBreve})</span></span>
                                 </p>
                             </div>
