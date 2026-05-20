@@ -20,10 +20,10 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; color: white; margin: 0; min-height: 100vh; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
         input, select, textarea { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; }
-        input:focus, textarea:focus { border-color: #ef4444 !important; outline: none; }
+        input:focus, textarea:focus { border-color: #D4AF37 !important; outline: none; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-        .img-card:first-child { border: 2px solid #ef4444; }
+        .img-card:first-child { border: 2px solid #D4AF37; }
     </style>
 </head>
 <body class="custom-scrollbar">
@@ -56,7 +56,7 @@
             const initialForm = {
                 marca: '', modello: '', prezzo: '', anno: '', km: '', 
                 alimentazione: 'Diesel', categoria: 'SUV', descrizione: '', 
-                immagini: [], potenza: '', cilindrata: '', colore: ''
+                immagini: [], potenza: '', cilindrata: '', colore: '', condizione: 'Occasione'
             };
             
             const [newCar, setNewCar] = useState(initialForm);
@@ -145,6 +145,7 @@
                     potenza: car.potenza || '',
                     cilindrata: car.cilindrata || '',
                     colore: car.colore || '',
+                    condizione: car.condizione || 'Occasione',
                     immagini: car.galleria || (car.immagine ? [car.immagine] : [])
                 });
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -175,6 +176,7 @@
                         potenza: newCar.potenza ? Number(newCar.potenza) : null,
                         cilindrata: newCar.cilindrata ? Number(newCar.cilindrata) : null,
                         colore: newCar.colore || '',
+                        condizione: newCar.condizione || 'Occasione',
                         immagine: newCar.immagini[0], 
                         galleria: newCar.immagini,   
                         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -207,11 +209,11 @@
                 <div className="min-h-screen p-4 md:p-8">
                     <header className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
                         <div className="flex items-center gap-3">
-                            <div className="bg-red-600 p-3 rounded-2xl shadow-lg shadow-red-600/20 text-white">
+                            <div className="bg-[#D4AF37] p-3 rounded-2xl shadow-lg shadow-[#D4AF37]/20 text-black">
                                 <i data-lucide="layout-dashboard" className="w-6 h-6"></i>
                             </div>
                             <div>
-                                <h1 className="text-2xl font-black uppercase tracking-tighter italic">Gestionale <span className="text-red-600">Direzione Auto</span></h1>
+                                <h1 className="text-2xl font-black uppercase tracking-tighter italic">Gestionale <span className="text-[#D4AF37]">Direzione Auto</span></h1>
                                 <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">Controllo Stock Piazzale</p>
                             </div>
                         </div>
@@ -223,7 +225,7 @@
                             <form onSubmit={saveCar} className="glass p-6 rounded-[2rem] sticky top-8 border-white/10">
                                 <div className="flex justify-between items-center mb-6">
                                     <h2 className="text-lg font-bold flex items-center gap-2 uppercase tracking-tight">
-                                        <i data-lucide={editingId ? "edit" : "plus-circle"} className="w-5 h-5 text-red-600"></i> 
+                                        <i data-lucide={editingId ? "edit" : "plus-circle"} className="w-5 h-5 text-[#D4AF37]"></i> 
                                         {editingId ? 'Modifica Veicolo' : 'Nuovo Veicolo'}
                                     </h2>
                                     {editingId && (
@@ -249,7 +251,7 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                {idx === 0 && <div className="absolute bottom-0 left-0 right-0 bg-red-600 text-[8px] text-center font-bold uppercase py-0.5 text-white">Copertina</div>}
+                                                {idx === 0 && <div className="absolute bottom-0 left-0 right-0 bg-[#D4AF37] text-black text-[8px] text-center font-bold uppercase py-0.5">Copertina</div>}
                                             </div>
                                         ))}
                                         
@@ -303,6 +305,16 @@
                                         </select>
                                     </div>
 
+                                    <div>
+                                        <select className="w-full p-3 rounded-xl text-sm" value={newCar.condizione} onChange={e => setNewCar({...newCar, condizione: e.target.value})}>
+                                            <option value="Occasione">Occasione (Predefinito)</option>
+                                            <option value="Auto KM 0">Auto KM 0</option>
+                                            <option value="Auto aziendale">Auto aziendale</option>
+                                            <option value="Nuovo">Nuovo</option>
+                                            <option value="Usato Garantito">Usato Garantito</option>
+                                        </select>
+                                    </div>
+
                                     <textarea 
                                         placeholder="Descrizione tecnica e optional..." 
                                         className="w-full p-3 rounded-xl text-sm min-h-[100px] resize-none"
@@ -312,7 +324,7 @@
 
                                     <button 
                                         disabled={isSubmitting}
-                                        className={`w-full py-4 rounded-2xl font-bold uppercase tracking-widest text-sm transition shadow-xl text-white ${isSubmitting ? 'bg-slate-700 animate-pulse' : 'bg-red-600 hover:bg-red-700'}`}
+                                        className={`w-full py-4 rounded-2xl font-bold uppercase tracking-widest text-sm transition shadow-xl text-black ${isSubmitting ? 'bg-slate-700 text-white animate-pulse' : 'bg-[#D4AF37] hover:bg-yellow-500'}`}
                                     >
                                         {isSubmitting ? 'Salvataggio...' : (editingId ? 'Aggiorna Annuncio' : 'Pubblica nel piazzale')}
                                     </button>
@@ -334,12 +346,13 @@
                                             <img src={car.immagine} className="w-full h-full object-cover" />
                                         </div>
                                         <div className="flex-grow">
-                                            <h3 className="font-bold uppercase text-sm leading-tight text-white">{car.marca} <span className="text-red-600">{car.modello}</span></h3>
+                                            <h3 className="font-bold uppercase text-sm leading-tight text-white">{car.marca} <span className="text-[#D4AF37]">{car.modello}</span></h3>
                                             <div className="text-[10px] text-slate-400 font-bold mt-1 uppercase">
                                                 {car.anno} • {car.km?.toLocaleString()} KM • <span className="text-white">€{car.prezzo?.toLocaleString()}</span>
                                             </div>
                                             <div className="flex flex-wrap gap-2 mt-2">
-                                                {car.potenza && <span className="text-[8px] bg-red-600/20 px-1.5 py-0.5 rounded text-red-400 font-bold uppercase">{car.potenza} CV</span>}
+                                                <span className="text-[8px] bg-[#D4AF37]/20 px-1.5 py-0.5 rounded text-[#D4AF37] font-bold uppercase">{car.condizione || 'Occasione'}</span>
+                                                {car.potenza && <span className="text-[8px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 font-bold uppercase">{car.potenza} CV</span>}
                                                 {car.cilindrata && <span className="text-[8px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 font-bold uppercase">{car.cilindrata} cc</span>}
                                                 {car.colore && <span className="text-[8px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 font-bold uppercase">{car.colore}</span>}
                                             </div>
