@@ -312,7 +312,7 @@
                                             key={index}
                                             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroImage ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
                                             style={{
-                                                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.95)), url('${img}')`,
+                                                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('${img}')`,
                                                 backgroundSize: 'cover',
                                                 backgroundPosition: 'center'
                                             }}
@@ -672,6 +672,70 @@
                                         marginWidth="0"
                                         className="rounded-2xl"
                                     >Caricamento in corso…</iframe>
+                                </div>
+                            </div>
+                        )}
+
+                        {currentPage === 'lavoraconnoi' && (
+                            <div className="py-24 px-6 max-w-5xl mx-auto animate-in fade-in duration-700 text-center">
+                                <h2 className="text-5xl md:text-6xl font-black uppercase italic tracking-tighter text-white mb-8">Lavora con <span className="text-[#D4AF37]">Noi</span></h2>
+                                <p className="text-xl text-slate-300 font-bold max-w-3xl mx-auto mb-16">
+                                    Entra a far parte del nostro Gruppo. Siamo alla continua ricerca di talenti dinamici, appassionati di motori e propensi alle vendite e al contatto col pubblico. Non esitare a contattarci per fissare un colloquio!
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-3xl mx-auto">
+                                    <a href={`https://wa.me/${CONFIG.whatsappNumber}?text=Buongiorno, vorrei inviare la mia candidatura per lavorare con voi nel vostro Gruppo.`} target="_blank" className="w-full sm:w-1/2 bg-green-500 hover:bg-green-600 text-white flex items-center justify-center gap-3 py-6 rounded-2xl font-black uppercase text-sm tracking-widest transition shadow-lg transform hover:-translate-y-1"><i data-lucide="message-circle" className="w-6 h-6"></i>WhatsApp</a>
+                                    <a href={`tel:${CONFIG.telefonoLink}`} className="w-full sm:w-1/2 bg-[#D4AF37] hover:bg-white text-black flex items-center justify-center gap-3 py-6 rounded-2xl font-black uppercase text-sm tracking-widest transition shadow-lg transform hover:-translate-y-1"><i data-lucide="phone" className="w-6 h-6"></i>Chiama Ora</a>
+                                </div>
+                            </div>
+                        )}
+
+                        {currentPage === 'contatti' && (
+                            <div className="py-24 px-6 max-w-5xl mx-auto animate-in fade-in duration-700">
+                                <h2 className="text-5xl font-black uppercase italic mb-16 text-center text-white">Contattaci</h2>
+                                <div className="grid md:grid-cols-2 gap-16 items-start">
+                                    <div className="space-y-10">
+                                        <div className="flex gap-6 items-start">
+                                            <div className="bg-[#D4AF37]/10 p-4 rounded-2xl text-[#D4AF37] shadow-sm"><i data-lucide="map-pin" className="w-6 h-6"></i></div>
+                                            <div>
+                                                <h4 className="font-black uppercase text-xs tracking-widest text-slate-400 mb-2">Sede Principale</h4>
+                                                <p className="text-xl font-bold text-white leading-tight">{CONFIG.indirizzo}<br/>{CONFIG.cap} {CONFIG.citta} ({CONFIG.provinciaBreve})</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-6 items-start">
+                                            <div className="bg-[#D4AF37]/10 p-4 rounded-2xl text-[#D4AF37] shadow-sm"><i data-lucide="mail" className="w-6 h-6"></i></div>
+                                            <div>
+                                                <h4 className="font-black uppercase text-xs tracking-widest text-slate-400 mb-2">Email Ufficiale</h4>
+                                                <p className="text-xl font-bold text-white break-all">{CONFIG.email}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-6 items-start">
+                                            <div className="bg-[#D4AF37]/10 p-4 rounded-2xl text-[#D4AF37] shadow-sm"><i data-lucide="phone" className="w-6 h-6"></i></div>
+                                            <div>
+                                                <h4 className="font-black uppercase text-xs tracking-widest text-slate-400 mb-2">Linea Diretta</h4>
+                                                <p className="text-2xl font-black text-white">{CONFIG.telefonoMostrato}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="bg-[#0a0a0a] p-8 md:p-12 rounded-[3rem] shadow-xl border border-[#D4AF37]/20 flex flex-col items-center text-center justify-center min-h-[300px]">
+                                        <h3 className="text-3xl font-black uppercase italic mb-8 text-white tracking-tighter">Social Network</h3>
+                                        <div className="flex flex-col gap-4 w-full">
+                                            {CONFIG.social.instagram && (
+                                                <a href={CONFIG.social.instagram} target="_blank" className="bg-[#111] border border-white/10 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-4 hover:bg-[#D4AF37] hover:text-black transition shadow-lg transform hover:-translate-y-1">
+                                                    <img src={IG_ICON} className="w-5 h-5" alt="Instagram" /> Instagram
+                                                </a>
+                                            )}
+                                            {CONFIG.social.facebook && (
+                                                <a href={CONFIG.social.facebook} target="_blank" className="bg-[#1877F2] text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-4 hover:bg-blue-700 transition shadow-lg transform hover:-translate-y-1">
+                                                    <img src={FB_ICON} className="w-5 h-5" alt="Facebook" /> Facebook
+                                                </a>
+                                            )}
+                                            {CONFIG.social.autosupermarket && (
+                                                <a href={CONFIG.social.autosupermarket} target="_blank" className="bg-[#111] border border-white/10 text-[#D4AF37] py-5 rounded-2xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-4 hover:bg-[#D4AF37] hover:text-black transition shadow-lg transform hover:-translate-y-1">
+                                                    <img src={LOGO_AUTOSUPERMARKET} className="w-6 h-6 rounded-md bg-white p-0.5" alt="Autosupermarket" /> Autosupermarket
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )}
