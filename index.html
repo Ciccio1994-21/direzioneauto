@@ -81,7 +81,7 @@
             email: "info@direzioneauto.it",
             
             social: {
-                instagram: "",
+                instagram: "https://www.instagram.com/direzioneauto.it/",
                 facebook: "https://www.facebook.com/people/Direzione-Auto/61589701618386/?rdid=GoruiGBQuOVDDg7E&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Cka6NKLYh%2F%3Fref%3D1",
                 autosupermarket: ""
             },
@@ -367,7 +367,14 @@
                                             <div className="h-64 overflow-hidden relative">
                                                 <img src={car.immagine} className="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-90 group-hover:opacity-100" alt={car.modello} />
                                                 <div className="absolute top-4 left-4 bg-black/90 text-[#D4AF37] backdrop-blur px-3 py-1 rounded-full text-[10px] font-black shadow-sm uppercase tracking-widest">{car.categoria}</div>
-                                                <div className="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-[10px] font-black shadow-lg uppercase tracking-widest">{car.condizione || "Occasione"}</div>
+                                                
+                                                {/* Logica per il badge Condizione */}
+                                                {car.condizione === "Veicoli in arrivo" ? (
+                                                    <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-[10px] font-black shadow-lg uppercase tracking-widest">Veicoli in arrivo</div>
+                                                ) : (
+                                                    <div className="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-[10px] font-black shadow-lg uppercase tracking-widest">{car.condizione || "Occasione"}</div>
+                                                )}
+
                                                 <div className="absolute bottom-4 right-4 bg-black text-[#D4AF37] px-4 py-2 rounded-2xl font-black text-xl shadow-lg border border-[#D4AF37]/30">€{Number(car.prezzo)?.toLocaleString()}</div>
                                             </div>
                                             <div className="p-8">
@@ -494,7 +501,14 @@
                                                         <div className="h-56 overflow-hidden relative flex-shrink-0">
                                                             <img src={car.immagine} className="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-90 group-hover:opacity-100" alt={car.modello} />
                                                             <div className="absolute top-4 left-4 bg-black/90 text-[#D4AF37] backdrop-blur px-3 py-1 rounded-full text-[10px] font-black shadow-sm uppercase tracking-widest truncate max-w-[80%]">{car.categoria}</div>
-                                                            <div className="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-[10px] font-black shadow-lg uppercase tracking-widest">{car.condizione || "Occasione"}</div>
+                                                            
+                                                            {/* Logica per il badge Condizione */}
+                                                            {car.condizione === "Veicoli in arrivo" ? (
+                                                                <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-[10px] font-black shadow-lg uppercase tracking-widest">Veicoli in arrivo</div>
+                                                            ) : (
+                                                                <div className="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-[10px] font-black shadow-lg uppercase tracking-widest">{car.condizione || "Occasione"}</div>
+                                                            )}
+
                                                             <div className="absolute bottom-4 right-4 bg-black text-[#D4AF37] px-4 py-2 rounded-xl font-black text-lg shadow-lg border border-[#D4AF37]/30">€{Number(car.prezzo)?.toLocaleString()}</div>
                                                         </div>
                                                         <div className="p-6 flex-grow flex flex-col">
@@ -545,7 +559,14 @@
                                     <div className="flex flex-col overflow-hidden w-full max-w-full">
                                         <div className="flex gap-2 mb-4 flex-wrap">
                                             <span className="bg-black text-[#D4AF37] px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest w-fit border border-[#D4AF37]/30">{selectedCar.categoria}</span>
-                                            <span className="bg-[#D4AF37] text-black px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest w-fit">{selectedCar.condizione || 'Occasione'}</span>
+                                            
+                                            {/* Logica per il badge Condizione */}
+                                            {selectedCar.condizione === "Veicoli in arrivo" ? (
+                                                <span className="bg-red-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest w-fit shadow-sm">Veicoli in arrivo</span>
+                                            ) : (
+                                                <span className="bg-[#D4AF37] text-black px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest w-fit">{selectedCar.condizione || 'Occasione'}</span>
+                                            )}
+
                                         </div>
                                         <h1 className="text-5xl font-black uppercase italic tracking-tighter text-white leading-none mb-2 break-words">{selectedCar.marca}</h1>
                                         <p className="text-2xl text-[#D4AF37] font-bold uppercase mb-6 break-words">{selectedCar.modello}</p>
