@@ -56,7 +56,7 @@
             const initialForm = {
                 marca: '', modello: '', prezzo: '', anno: '', km: '', 
                 alimentazione: 'Diesel', categoria: 'SUV', descrizione: '', 
-                immagini: [], potenza: '', cilindrata: '', colore: '', condizione: 'Occasione'
+                immagini: [], potenza: '', cilindrata: '', colore: '', condizione: 'Occasione', cambio: 'Manuale'
             };
             
             const [newCar, setNewCar] = useState(initialForm);
@@ -146,6 +146,7 @@
                     cilindrata: car.cilindrata || '',
                     colore: car.colore || '',
                     condizione: car.condizione || 'Occasione',
+                    cambio: car.cambio || 'Manuale',
                     immagini: car.galleria || (car.immagine ? [car.immagine] : [])
                 });
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -177,6 +178,7 @@
                         cilindrata: newCar.cilindrata ? Number(newCar.cilindrata) : null,
                         colore: newCar.colore || '',
                         condizione: newCar.condizione || 'Occasione',
+                        cambio: newCar.cambio || 'Manuale',
                         immagine: newCar.immagini[0], 
                         galleria: newCar.immagini,   
                         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -305,14 +307,19 @@
                                         </select>
                                     </div>
 
-                                    <div>
-                                        <select className="w-full p-3 rounded-xl text-sm" value={newCar.condizione} onChange={e => setNewCar({...newCar, condizione: e.target.value})}>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <select className="p-3 rounded-xl text-sm" value={newCar.condizione} onChange={e => setNewCar({...newCar, condizione: e.target.value})}>
                                             <option value="Occasione">Occasione (Predefinito)</option>
                                             <option value="Auto KM 0">Auto KM 0</option>
                                             <option value="Auto aziendale">Auto aziendale</option>
                                             <option value="Nuovo">Nuovo</option>
                                             <option value="Usato Garantito">Usato Garantito</option>
-                                            <option value="Veicolo in arrivo">Veicolo in arrivo</option>
+                                            <option value="Veicoli in arrivo">Veicoli in arrivo</option>
+                                        </select>
+                                        <select className="p-3 rounded-xl text-sm" value={newCar.cambio} onChange={e => setNewCar({...newCar, cambio: e.target.value})}>
+                                            <option value="Manuale">Cambio Manuale</option>
+                                            <option value="Automatico">Cambio Automatico</option>
+                                            <option value="Sequenziale">Cambio Sequenziale</option>
                                         </select>
                                     </div>
 
@@ -353,6 +360,7 @@
                                             </div>
                                             <div className="flex flex-wrap gap-2 mt-2">
                                                 <span className="text-[8px] bg-[#D4AF37]/20 px-1.5 py-0.5 rounded text-[#D4AF37] font-bold uppercase">{car.condizione || 'Occasione'}</span>
+                                                <span className="text-[8px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 font-bold uppercase">{car.cambio || 'Manuale'}</span>
                                                 {car.potenza && <span className="text-[8px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 font-bold uppercase">{car.potenza} CV</span>}
                                                 {car.cilindrata && <span className="text-[8px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 font-bold uppercase">{car.cilindrata} cc</span>}
                                                 {car.colore && <span className="text-[8px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 font-bold uppercase">{car.colore}</span>}
